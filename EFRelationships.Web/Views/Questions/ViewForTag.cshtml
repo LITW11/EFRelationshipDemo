@@ -1,0 +1,24 @@
+﻿@using EFRelationships.Data;
+@model List<Question>
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Tags</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var question in Model)
+        {
+            <tr>
+                <td>@question.Title</td>
+                <td>@question.Text</td>
+                <td>
+                    @String.Join(", ", question.QuestionsTags.Select(q => q.Tag.Name))
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
